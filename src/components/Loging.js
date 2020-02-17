@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 
-export default class signupContainer extends Component {
+export default class Loging extends Component {
   state = {
     email: "",
     password: ""
@@ -22,7 +22,7 @@ export default class signupContainer extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>Laura and Alan's Game</h1>
+        <h1>Enter your email and password to loging</h1>
         <label>Email:</label>
         <input
           type="text"
