@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { login } from "../actions/user-action";
 
-export default class Loging extends Component {
+class Login extends Component {
   state = {
     email: "",
     password: ""
@@ -10,7 +11,10 @@ export default class Loging extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log("IM submitting!", this.state);
-    this.setState({ value: event.target.value });
+    console.log("WHAT IS THIS PROPS DISPATCH", this.props.dispatch);
+    this.props.dispatch(login(this.state.email, this.state.password));
+    this.props.history.push("/room"); //when logged in, it goes to the roompage
+    this.setState({ email: "", password: "" });
   };
 
   handleInputs = event => {
@@ -22,7 +26,7 @@ export default class Loging extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>Enter your email and password to loging</h1>
+        <h1>Enter your email and password to login</h1>
         <label>Email:</label>
         <input
           type="text"
@@ -44,3 +48,12 @@ export default class Loging extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => {
+//   return {
+//      userLoggedIn: state.user.token !== null
+//   };
+// };
+
+export default connect()(Login);
+//mapStateToProps

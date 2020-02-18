@@ -5,7 +5,7 @@ export default class WelcomePage extends Component {
     return (
       <div>
         <h1>Welcome!</h1>
-        <a href="http://localhost:3000/loging">
+        <a href="http://localhost:3000/login">
           <button>Login</button>
         </a>
         <a href="http://localhost:3000/signup">

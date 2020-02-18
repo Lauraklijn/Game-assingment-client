@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { signUp } from "../actions/user-action";
 
-export default class signupContainer extends Component {
+class signupContainer extends Component {
   state = {
     email: "",
     password: ""
@@ -10,6 +11,7 @@ export default class signupContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log("IM submitting!", this.state);
+    this.props.dispatch(signUp(this.state.email, this.state.password));
     this.setState({ value: event.target.value });
   };
 
@@ -44,3 +46,5 @@ export default class signupContainer extends Component {
     );
   }
 }
+
+export default connect()(signupContainer);

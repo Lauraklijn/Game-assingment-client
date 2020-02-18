@@ -1,11 +1,4 @@
-import { USER_LOGIN } from "../actions/user-action";
-import { USER_CREATED } from "../actions/user-action";
-
-const initialState = {
-  userCreated: false,
-  jwt: null,
-  email: null
-};
+const initialState = [];
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
