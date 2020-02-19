@@ -1,17 +1,28 @@
-const initialState = [];
+import { ROOM_CREATED } from "../actions/room-action";
+import { ALL_ROOMS } from "../actions/room-action";
 
+const initialState = {
+  all: []
+};
+
+/*
+{
+  type: 'room/ONE_ROOM',
+  payload: room
+}
+
+*/
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case USER_LOGIN:
+    case ALL_ROOMS:
       return {
-        jwt: action.payload.token,
-        email: action.payload.email
+        all: [...action.payload]
       };
-    case USER_CREATED:
+    case ROOM_CREATED:
       return {
-        ...state,
-        userCreated: true
+        all: [...state.all, action.payload]
       };
+
     default:
       return state;
   }
