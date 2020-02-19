@@ -5,6 +5,8 @@ import SignUp from "./components/Signup";
 import Login from "./components/Login";
 import WelcomePage from "./components/WelcomePage";
 import Room from "./components/Room";
+import GamePage from "./components/game-components/Game";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   // to use stream --> configured the app into a class component
@@ -27,6 +29,7 @@ class App extends Component {
           <Route exact path="/room" component={Room} />
           <Route exact path="/" component={WelcomePage} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/game" component={GamePage} />
           <Route exact path="/login" component={Login} />
         </Router>
       </div>

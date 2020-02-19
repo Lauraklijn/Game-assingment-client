@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { createRoom } from "../actions/room-action";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 class Room extends Component {
   state = {
@@ -30,20 +34,45 @@ class Room extends Component {
       return <h2 key={room.id}> {room.name}</h2>; // to go to rooms
     });
     return (
-      <div>
-        <div>
-          <input
+      <div className="room">
+        <Link to="/">
+          <p>HOME</p>
+        </Link>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Player room</Form.Label>
+          <Form.Control
             name="newRoom"
             text={""}
             value={this.state.name}
             onChange={this.handleInputs}
-          ></input>
-          <button onClick={this.handleSubmit} type="submit">
-            Create room
-          </button>
-        </div>
+            placeholder="Enter roomname"
+          />
+          <Button
+            type="submit"
+            value="Submit"
+            variant="dark"
+            onClick={this.handleSubmit}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form.Group>
+
+        <a href="http://localhost:3000/game">
+          <Button variant="dark" size="lg">
+            Play game
+          </Button>
+        </a>
+
         <div>
-          <ul>Rooms: {roomList}</ul>
+          <Card bg="light" text="black" style={{ width: "18rem" }}>
+            <Card.Header>Rooms</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                <div className="roomlist"> {roomList}</div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </div>
       </div>
     );
@@ -55,3 +84,14 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Room);
+
+//Without BOOTSTRAP
+// <input
+// name="newRoom"
+// text={""}
+// value={this.state.name}
+// onChange={this.handleInputs}
+// ></input>
+// <button onClick={this.handleSubmit} type="submit">
+// Create room
+// </button>
