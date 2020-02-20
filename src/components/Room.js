@@ -25,12 +25,15 @@ class Room extends Component {
   };
 
   render() {
-    if (!this.props.rooms.length) {
-      return <h1>no rooms</h1>;
-    }
-    console.log("what is id?", this.props.rooms);
+    // if (!this.props.rooms.length) {
+    //   return <h1>no rooms</h1>;
+    // }
+    // console.log(
+    //   "what is id?",
+    //   this.props.rooms.map(room => room.name)
+    // );
     const roomList = this.props.rooms.map(room => {
-      console.log("Room test", room);
+      // console.log("Room test", room);
       return <div key={room.id}>{room.name}</div>; // to go to rooms
     });
     return (
@@ -65,7 +68,9 @@ class Room extends Component {
           <Card bg="light" text="black" style={{ width: "18rem" }}>
             <Card.Header>Rooms</Card.Header>
             <Card.Body>
-              <Card.Text>{roomList}</Card.Text>
+              <Card.Text>
+                <Link>{roomList}</Link>
+              </Card.Text>
             </Card.Body>
           </Card>
         </div>

@@ -7,6 +7,7 @@ import WelcomePage from "./components/WelcomePage";
 import Room from "./components/Room";
 import GamePage from "./components/game-components/Game";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Channel from "./components/Channel";
 
 class App extends Component {
   // to use stream --> configured the app into a class component
@@ -17,9 +18,18 @@ class App extends Component {
     this.stream.onmessage = event => {
       const stringAction = event.data;
       const action = JSON.parse(stringAction);
+      // const roomId = JSON.parse(getRoomString);
       console.log("STREAM MESSAGE GOT", action);
       this.props.dispatch(action); // then dispatch it
     };
+
+    // this.stream.onmessage = event => {
+    //   const stringAction = event.data;
+    //   const action = JSON.parse(stringAction);
+    //   //const roomId = JSON.parse(getRoomString);
+    //   console.log(rommId);
+    //   // this.props.dispatch(action); // then dispatch it
+    // };
   };
 
   render() {
@@ -27,6 +37,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Route exact path="/room" component={Room} />
+          <Route exact path="/room/:id" component={Channel} />
           <Route exact path="/" component={WelcomePage} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/game" component={GamePage} />
