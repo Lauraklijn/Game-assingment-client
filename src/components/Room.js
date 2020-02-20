@@ -26,18 +26,16 @@ class Room extends Component {
 
   render() {
     if (!this.props.rooms.length) {
-      return <p> no rooms</p>;
+      return <h1>no rooms</h1>;
     }
     console.log("what is id?", this.props.rooms);
     const roomList = this.props.rooms.map(room => {
       console.log("Room test", room);
-      return <h2 key={room.id}> {room.name}</h2>; // to go to rooms
+      return <div key={room.id}>{room.name}</div>; // to go to rooms
     });
     return (
       <div className="room">
-        <Link to="/">
-          <p>HOME</p>
-        </Link>
+        <Link to="/">HOME</Link>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Player room</Form.Label>
           <Form.Control
@@ -52,7 +50,6 @@ class Room extends Component {
             value="Submit"
             variant="dark"
             onClick={this.handleSubmit}
-            type="submit"
           >
             Submit
           </Button>
@@ -68,9 +65,7 @@ class Room extends Component {
           <Card bg="light" text="black" style={{ width: "18rem" }}>
             <Card.Header>Rooms</Card.Header>
             <Card.Body>
-              <Card.Text>
-                <div className="roomlist"> {roomList}</div>
-              </Card.Text>
+              <Card.Text>{roomList}</Card.Text>
             </Card.Body>
           </Card>
         </div>

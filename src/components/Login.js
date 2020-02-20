@@ -13,9 +13,15 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log("IM submitting!", this.state);
+    if (!this.state.email || !this.state.password) {
+      alert("Fill in something Asshole!!");
+      return;
+    }
     console.log("WHAT IS THIS PROPS DISPATCH", this.props.dispatch);
-    this.props.dispatch(login(this.state.email, this.state.password));
-    this.props.history.push("/room"); //when logged in, it goes to the roompage
+    this.props.dispatch(
+      login(this.state.email, this.state.password, this.props.history)
+    );
+
     this.setState({ email: "", password: "" });
   };
 
@@ -74,7 +80,7 @@ export default connect()(Login);
 
 //<form onSubmit={this.handleSubmit}>
 
-{
+/*{
   /* <input
 type="text"
 name="email"
@@ -91,4 +97,3 @@ onChange={this.handleInputs}
 />
 
 <input type="submit" value="Submit" /> */
-}

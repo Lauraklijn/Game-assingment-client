@@ -5,7 +5,7 @@ export const ROOM_CREATED = "room/ONE_ROOM";
 
 export function createRoom(room) {
   return function(dispatch, getState) {
-    console.log("Alan here from creating room", room);
+    console.log("Alan and Laura here from creating room", room);
     return axios
       .post("http://localhost:4000/room", {
         room

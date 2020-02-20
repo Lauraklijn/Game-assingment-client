@@ -13,8 +13,15 @@ class signupContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log("IM submitting!", this.state);
-    this.props.dispatch(signUp(this.state.email, this.state.password));
-    this.props.history.push("/login");
+    if (!this.state.email || !this.state.password) {
+      alert("Fill in somethinh Asshole!!");
+      return;
+    }
+
+    this.props.dispatch(
+      signUp(this.state.email, this.state.password, this.props.history)
+    );
+
     this.setState({ value: event.target.value });
   };
 
@@ -63,7 +70,7 @@ class signupContainer extends Component {
 
 export default connect()(signupContainer);
 
-{
+/*{
   /* <form onSubmit={this.handleSubmit}>
 <h1>Fill in the form to create an account</h1>
 <label>Email:</label>
@@ -85,4 +92,3 @@ export default connect()(signupContainer);
   Submit
 </Button>
 </form> */
-}

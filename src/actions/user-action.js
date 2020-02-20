@@ -5,7 +5,7 @@ export const USER_LOGIN = "user/LOGIN";
 
 // SIGNUP_____________________________________
 
-export function signUp(email, password) {
+export function signUp(email, password, history) {
   return function(dispatch, getState) {
     console.log(email, password);
     return axios
@@ -15,6 +15,8 @@ export function signUp(email, password) {
       })
       .then(response => {
         console.log(response.data);
+        history.push("/login");
+
         dispatch(signUpSucces(response));
       });
   };
@@ -25,7 +27,7 @@ function signUpSucces() {
 
 // LOGIN_______________________________________
 
-export function login(email, password) {
+export function login(email, password, history) {
   return function(dispatch, getState) {
     console.log(email, password);
     return axios
@@ -35,6 +37,7 @@ export function login(email, password) {
       })
       .then(response => {
         console.log(response.data);
+        history.push("/room"); //when logged in, it goes to the roompage
         dispatch(loginAction(response.data.token, response.data.email));
       });
   };
