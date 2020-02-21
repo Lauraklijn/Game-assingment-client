@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createRoom } from "../actions/room-action";
+import { createRoom, joinRoom } from "../actions/room-action";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
@@ -24,6 +24,11 @@ class Room extends Component {
     });
   };
 
+  handelJoinRoom = event => {
+    event.preventDefault();
+    this.props.dispatch(joinRoom(this.state.newRoom));
+  };
+
   render() {
     // if (!this.props.rooms.length) {
     //   return <h1>no rooms</h1>;
@@ -33,8 +38,7 @@ class Room extends Component {
     //   this.props.rooms.map(room => room.name)
     // );
     const roomList = this.props.rooms.map(room => {
-      // console.log("Room test", room);
-      return <div key={room.id}>{room.name}</div>; // to go to rooms
+      return <div key={room.id}>{room.name}</div>;
     });
     return (
       <div className="room">
@@ -69,7 +73,7 @@ class Room extends Component {
             <Card.Header>Rooms</Card.Header>
             <Card.Body>
               <Card.Text>
-                <Link>{roomList}</Link>
+                <Button onClick={this.handelJoinRoom}>{roomList}</Button>
               </Card.Text>
             </Card.Body>
           </Card>

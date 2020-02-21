@@ -14,22 +14,12 @@ class App extends Component {
   stream = new EventSource("http://localhost:4000/stream"); // declare stream, calling server
 
   componentDidMount = () => {
-    // Use this to get the data from server and parse it
     this.stream.onmessage = event => {
       const stringAction = event.data;
       const action = JSON.parse(stringAction);
-      // const roomId = JSON.parse(getRoomString);
-      console.log("STREAM MESSAGE GOT", action);
-      this.props.dispatch(action); // then dispatch it
+      // console.log("STREAM MESSAGE GOT", action);
+      this.props.dispatch(action);
     };
-
-    // this.stream.onmessage = event => {
-    //   const stringAction = event.data;
-    //   const action = JSON.parse(stringAction);
-    //   //const roomId = JSON.parse(getRoomString);
-    //   console.log(rommId);
-    //   // this.props.dispatch(action); // then dispatch it
-    // };
   };
 
   render() {
